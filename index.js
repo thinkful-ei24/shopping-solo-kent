@@ -76,14 +76,15 @@ function handleDeleteItemClicked() {
     renderShoppingList();
   });
 }
-function changeCheckbox() {
-  console.log('`changeCheckbox` running');
+function changeCheckbox(checked) {
+  $('.js-shopping-list-filter').attr('value', checked)
 }
 
 function handleFilterCheckboxClicked() {
-  $('#js-shopping-list-form').change(function() {
-    changeCheckbox();
-  })
+  $('#js-shopping-list-form :checkbox').change(function() {
+    const checked = this.checked;
+    changeCheckbox(checked);
+  });
 }
 
 function handleShoppingList() {
