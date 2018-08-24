@@ -81,6 +81,7 @@ function handleDeleteItemClicked() {
 }
 function changeCheckbox(checked) {
   $('.js-shopping-list-filter').attr('value', checked);
+  STORE.checked = checked;
 }
 
 function handleFilterCheckboxClicked() {
