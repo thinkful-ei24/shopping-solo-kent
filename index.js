@@ -97,12 +97,20 @@ function handleFilterCheckboxClicked() {
   });
 }
 
+function handleSearchTyped() {
+  $('#js-shopping-list-form').on('keyup', '.js-shopping-list-search', function() {
+    const search = $(this).val();
+    console.log(search);
+  });
+}
+
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
   handleItemCheckClicked();
   handleDeleteItemClicked();
   handleFilterCheckboxClicked();
+  handleSearchTyped();
 }
 
 $(handleShoppingList);
