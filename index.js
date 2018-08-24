@@ -31,15 +31,9 @@ function generateShoppingItemsString(shoppingList) {
 }
 
 function renderShoppingList() {
-  let viewItems = STORE.items.map((item, index) => {
-    return {...item, index};
-  });
-
-  viewItems = viewItems.filter(item => item.name.includes(STORE.search));
-
-  if (STORE.checked) {
-    viewItems = viewItems.filter(item => !item.checked);
-  }
+  let viewItems = STORE.items.map((item, index) => { return {...item, index}; });
+  if (viewItems.length) viewItems = viewItems.filter(item => item.name.includes(STORE.search));
+  if (STORE.checked) viewItems = viewItems.filter(item => !item.checked);
 
   const shoppingListItemsString = generateShoppingItemsString(viewItems);
   $('.js-shopping-list').html(shoppingListItemsString);
@@ -96,7 +90,7 @@ function changeCheckbox(checked) {
 }
 
 function handleFilterCheckboxClicked() {
-  $('#js-shopping-list-form :checkbox').change(function() {
+  $('#js-shopping-list-form').on('change', 'input[type="checkbox"]', function() {
     const checked = this.checked;
     changeCheckbox(checked);
     renderShoppingList();
