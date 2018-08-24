@@ -7,7 +7,8 @@ const STORE = {
     {name: 'milk', checked: true},
     {name: 'bread', checked: false}
   ],
-  checked: false
+  checked: false,
+  search: ''
 };
 
 function generateItemElement(item, itemIndex) {
@@ -30,6 +31,7 @@ function generateShoppingItemsString(shoppingList) {
 }
 
 function renderShoppingList() {
+  console.log('rendering');
   let viewItems = STORE.items;
   if (STORE.checked) {
     viewItems = STORE.items.filter(item => !item.checked);
@@ -98,13 +100,14 @@ function handleFilterCheckboxClicked() {
 }
 
 function changeSearch(search) {
-  console.log(search);
+  STORE.search = search;
 }
 
 function handleSearchTyped() {
   $('#js-shopping-list-form').on('input propertychange paste', '.js-shopping-list-search', function() {
     const search = $(this).val();
     changeSearch(search);
+    renderShoppingList();
   });
 }
 
