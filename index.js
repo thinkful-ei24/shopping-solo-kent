@@ -31,10 +31,9 @@ function generateShoppingItemsString(shoppingList) {
 }
 
 function renderShoppingList() {
-  console.log('rendering');
   let viewItems = STORE.items.filter(item => item.name.includes(STORE.search));
   if (STORE.checked) {
-    viewItems = STORE.items.filter(item => !item.checked);
+    viewItems = viewItems.filter(item => !item.checked);
   }
 
   const shoppingListItemsString = generateShoppingItemsString(viewItems);
@@ -111,6 +110,18 @@ function handleSearchTyped() {
   });
 }
 
+function changeItemName(itemName, itemIndex) {
+  STORE.items[itemIndex].name = itemName;
+}
+
+function handleItemEdited() {
+  $('.js-shopping-list').on('input propertychange paste', '.js-shopping-item', function() {
+    const name = this.value;
+    const index = getItemIndexFromElement(this);
+    changeItemName(name, index);
+  });
+}
+
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
@@ -118,6 +129,7 @@ function handleShoppingList() {
   handleDeleteItemClicked();
   handleFilterCheckboxClicked();
   handleSearchTyped();
+  handleItemEdited();
 }
 
 $(handleShoppingList);
