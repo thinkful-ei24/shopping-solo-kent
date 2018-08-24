@@ -27,11 +27,16 @@ function generateItemElement(item, itemIndex) {
 }
 
 function generateShoppingItemsString(shoppingList) {
-  return shoppingList.map((item, itemIndex) => generateItemElement(item, itemIndex)).join('');
+  return shoppingList.map((item) => generateItemElement(item, item.index)).join('');
 }
 
 function renderShoppingList() {
-  let viewItems = STORE.items.filter(item => item.name.includes(STORE.search));
+  let viewItems = STORE.items.map((item, index) => {
+    return {...item, index};
+  });
+
+  viewItems = viewItems.filter(item => item.name.includes(STORE.search));
+
   if (STORE.checked) {
     viewItems = viewItems.filter(item => !item.checked);
   }

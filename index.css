@@ -44,13 +44,8 @@ button:hover {
   font-style: italic;
   font-size: 20px;
   margin-bottom: 15px;
-  border: 1px solid transparent;
 }
 
 .shopping-item__checked {
   text-decoration: line-through;
-}
-
-.shopping-item:hover {
-  border: 1px solid grey;
 }
