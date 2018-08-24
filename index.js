@@ -97,10 +97,14 @@ function handleFilterCheckboxClicked() {
   });
 }
 
+function changeSearch(search) {
+  console.log(search);
+}
+
 function handleSearchTyped() {
-  $('#js-shopping-list-form').on('keyup', '.js-shopping-list-search', function() {
+  $('#js-shopping-list-form').on('input propertychange paste', '.js-shopping-list-search', function() {
     const search = $(this).val();
-    console.log(search);
+    changeSearch(search);
   });
 }
 
