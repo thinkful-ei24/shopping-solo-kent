@@ -4,7 +4,7 @@ const STORE = {
   items: [
     {name: 'apples', checked: false},
     {name: 'oranges', checked: false},
-    {name: 'milk', checked: false},
+    {name: 'milk', checked: true},
     {name: 'bread', checked: false}
   ],
   checked: false
@@ -30,7 +30,12 @@ function generateShoppingItemsString(shoppingList) {
 }
 
 function renderShoppingList() {
-  const shoppingListItemsString = generateShoppingItemsString(STORE.items);
+  let viewItems = STORE.items;
+  if (STORE.checked) {
+    viewItems = STORE.items.filter(item => !item.checked);
+  }
+
+  const shoppingListItemsString = generateShoppingItemsString(viewItems);
   $('.js-shopping-list').html(shoppingListItemsString);
 }
 
@@ -88,6 +93,7 @@ function handleFilterCheckboxClicked() {
   $('#js-shopping-list-form :checkbox').change(function() {
     const checked = this.checked;
     changeCheckbox(checked);
+    renderShoppingList();
   });
 }
 
