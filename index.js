@@ -76,9 +76,14 @@ function handleDeleteItemClicked() {
     renderShoppingList();
   });
 }
+function changeCheckbox() {
+  console.log('`changeCheckbox` running');
+}
 
 function handleFilterCheckboxClicked() {
-  console.log('`handleFilterCheckboxClicked` running');
+  $('#js-shopping-list-form').change(function() {
+    changeCheckbox();
+  })
 }
 
 function handleShoppingList() {
