@@ -32,7 +32,7 @@ function generateShoppingItemsString(shoppingList) {
 
 function renderShoppingList() {
   console.log('rendering');
-  let viewItems = STORE.items;
+  let viewItems = STORE.items.filter(item => item.name.includes(STORE.search));
   if (STORE.checked) {
     viewItems = STORE.items.filter(item => !item.checked);
   }
