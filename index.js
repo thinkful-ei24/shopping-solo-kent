@@ -77,11 +77,16 @@ function handleDeleteItemClicked() {
   });
 }
 
+function handleFilterCheckboxClicked() {
+  console.log('`handleFilterCheckboxClicked` running');
+}
+
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
   handleItemCheckClicked();
   handleDeleteItemClicked();
+  handleFilterCheckboxClicked();
 }
 
 $(handleShoppingList);
