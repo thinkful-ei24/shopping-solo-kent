@@ -49,3 +49,18 @@ button:hover {
 .shopping-item__checked {
   text-decoration: line-through;
 }
+
+#js-shopping-list-form input {
+  margin: 5px;
+}
+
+#js-shopping-list-form input[type="text"] {
+  margin: 5px;
+  width: 250px;
+}
+
+#js-shopping-list-form label[for="shopping-list-entry"],
+#js-shopping-list-form label[for="shopping-list-search"] {
+  display: inline-block;
+  width: 88px;
+}
