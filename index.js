@@ -32,7 +32,7 @@ function generateShoppingItemsString(shoppingList) {
 
 function renderShoppingList() {
   let viewItems = STORE.items.map((item, index) => { return {...item, index}; });
-  if (viewItems.length) viewItems = viewItems.filter(item => item.name.includes(STORE.search));
+  if (viewItems.length) viewItems = viewItems.filter(item => item.name.toLowerCase().includes(STORE.search.toLowerCase()));
   if (STORE.checked) viewItems = viewItems.filter(item => !item.checked);
 
   const shoppingListItemsString = generateShoppingItemsString(viewItems);
